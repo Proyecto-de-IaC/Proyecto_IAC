@@ -1,0 +1,42 @@
+apiVersion: 1
+
+datasources:
+  # CloudWatch Metrics - Para métricas de AWS
+  - name: CloudWatch
+    type: cloudwatch
+    uid: cloudwatch-jac
+    access: proxy
+    jsonData:
+      authType: credentials
+      defaultRegion: us-east-2
+      customMetricsNamespaces: 'AWS/Lambda,AWS/ApiGateway,AWS/DynamoDB,AWS/S3,AWS/SQS'
+      assumeRoleArn: ''
+    secureJsonData:
+      accessKey: '$AWS_ACCESS_KEY_ID'
+      secretKey: '$AWS_SECRET_ACCESS_KEY'
+    isDefault: true
+    editable: true
+
+  # CloudWatch Logs - Para logs de las Lambda
+  - name: CloudWatch Logs
+    type: cloudwatch
+    uid: cloudwatch-logs-jac
+    access: proxy
+    jsonData:
+      authType: credentials
+      defaultRegion: us-east-2
+      
+      logGroups:
+        - name: '/aws/lambda/certificates'
+        - name: '/aws/lambda/create-course'
+        - name: '/aws/lambda/envio'
+        - name: '/aws/lambda/get-courses'
+        - name: '/aws/lambda/purchase-course'
+        - name: '/aws/lambda/registrations'
+        - name: '/aws/lambda/track-progress'
+        - name: '/aws/lambda/upload-video'
+        - name: '/aws/apigateway/jac-api'
+    secureJsonData:
+      accessKey: '$AWS_ACCESS_KEY_ID'
+      secretKey: '$AWS_SECRET_ACCESS_KEY'
+    editable: true
