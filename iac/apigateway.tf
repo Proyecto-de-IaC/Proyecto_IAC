@@ -6,6 +6,9 @@ resource "aws_api_gateway_rest_api" "certificates_api" {
     Name        = "${var.project_name}-api"
     Environment = var.environment
   })
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_api_gateway_resource" "certificates_resource" {
