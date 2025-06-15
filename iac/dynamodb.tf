@@ -35,7 +35,7 @@ data "aws_iam_policy_document" "kms_policy" {
       "kms:GenerateDataKey",
       "kms:DescribeKey"
     ]
-    resources = ["*"]
+    resources = [aws_kms_key.dynamodb_key.arn]
     principals {
       type = "AWS"
       identifiers = [
