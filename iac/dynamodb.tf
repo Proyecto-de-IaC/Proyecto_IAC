@@ -19,23 +19,13 @@ resource "aws_kms_alias" "dynamodb_key_alias" {
 # Política para la clave KMS
 data "aws_iam_policy_document" "kms_policy" {
   statement {
-    effect    = "Allow"
-    actions   = ["kms:*"]
-    resources = ["*"]
-    principals {
-      type        = "AWS"
-      identifiers = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"]
-    }
-  }
-
-  statement {
     effect = "Allow"
     actions = [
       "kms:Decrypt",
       "kms:GenerateDataKey",
       "kms:DescribeKey"
     ]
-    resources = ["*"]
+    resources = [aws_kms_key.dynamodb_key.arn]
     principals {
       type = "AWS"
       identifiers = [
