@@ -405,7 +405,7 @@ resource "aws_api_gateway_method_settings" "throttling" {
     throttling_rate_limit  = var.api_throttle_rate_limit
     throttling_burst_limit = var.api_throttle_burst_limit
     logging_level          = var.enable_api_gateway_logging ? "INFO" : "OFF"
-    data_trace_enabled     = var.enable_api_gateway_logging
+    data_trace_enabled     = false
     metrics_enabled        = true
   }
 }
