@@ -18,7 +18,8 @@ resource "aws_api_gateway_method" "certificates_post" {
   rest_api_id   = aws_api_gateway_rest_api.certificates_api.id
   resource_id   = aws_api_gateway_resource.certificates_resource.id
   http_method   = "POST"
-  authorization = "NONE"
+  authorization = "COGNITO_USER_POOLS"
+  authorizer_id = aws_api_gateway_authorizer.cognito.id
 }
 
 resource "aws_api_gateway_integration" "certificates_lambda" {
@@ -41,7 +42,8 @@ resource "aws_api_gateway_method" "registrations_post" {
   rest_api_id   = aws_api_gateway_rest_api.certificates_api.id
   resource_id   = aws_api_gateway_resource.registrations_resource.id
   http_method   = "POST"
-  authorization = "NONE"
+  authorization = "COGNITO_USER_POOLS"
+  authorizer_id = aws_api_gateway_authorizer.cognito.id
 }
 
 resource "aws_api_gateway_integration" "registrations_lambda" {
@@ -64,7 +66,8 @@ resource "aws_api_gateway_method" "create_course_post" {
   rest_api_id   = aws_api_gateway_rest_api.certificates_api.id
   resource_id   = aws_api_gateway_resource.create_course_resource.id
   http_method   = "POST"
-  authorization = "NONE"
+  authorization = "COGNITO_USER_POOLS"
+  authorizer_id = aws_api_gateway_authorizer.cognito.id
 }
 
 resource "aws_api_gateway_integration" "create_course_lambda" {
@@ -111,7 +114,8 @@ resource "aws_api_gateway_method" "upload_video_post" {
   rest_api_id   = aws_api_gateway_rest_api.certificates_api.id
   resource_id   = aws_api_gateway_resource.upload_video_resource.id
   http_method   = "POST"
-  authorization = "NONE"
+  authorization = "COGNITO_USER_POOLS"
+  authorizer_id = aws_api_gateway_authorizer.cognito.id
 }
 
 resource "aws_api_gateway_integration" "upload_video_lambda" {
@@ -135,7 +139,8 @@ resource "aws_api_gateway_method" "purchase_course_post" {
   rest_api_id   = aws_api_gateway_rest_api.certificates_api.id
   resource_id   = aws_api_gateway_resource.purchase_course_resource.id
   http_method   = "POST"
-  authorization = "NONE"
+  authorization = "COGNITO_USER_POOLS"
+  authorizer_id = aws_api_gateway_authorizer.cognito.id
 }
 
 resource "aws_api_gateway_integration" "purchase_course_lambda" {
