@@ -164,7 +164,7 @@ Características comunes:
 
 ---
 
-### Diagrama de Arquitectura Actualizado
+### Diagrama de Arquitectura 
 
 ```mermaid
 graph TD
